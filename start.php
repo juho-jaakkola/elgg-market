@@ -24,7 +24,9 @@ function market_init () {
 
 function market_page_handler ($page) {
 	elgg_load_library('elgg:market');
-	
+
+	elgg_push_breadcrumb(elgg_echo('market'), 'market/all');
+
 	switch ($page[0]) {
 		case 'add':
 			gatekeeper();
