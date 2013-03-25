@@ -79,7 +79,7 @@ function market_get_page_content_save ($guid = null) {
 	return $params;
 }
 
-function market_prepare_form_vars (ElggObject $item) {
+function market_prepare_form_vars (ElggObject $item = null) {
 	// input names => defaults
 	$values = array(
 		'title' => NULL,
