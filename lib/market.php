@@ -80,20 +80,25 @@ function market_get_page_content_read ($guid = NULL) {
 }
 
 function market_get_page_content_save ($guid = null) {
+	$item = get_entity($guid);
+	
 	if ($guid) {
-		$item = get_entity($guid);
-		$form_vars = market_prepare_form_vars($item);
-		
+		$title = elgg_echo('market:edit');
 		elgg_push_breadcrumb($item->title, $item->getURL());
 		elgg_push_breadcrumb(elgg_echo('market:edit'));
-		
-		$title = elgg_echo('market:edit');
 	} else {
-		$form_vars = market_prepare_form_vars($item);
 		$title = elgg_echo('market:add');
 		elgg_push_breadcrumb(elgg_echo('market:add'));
 	}
-	$form = elgg_view_form('market/save', $body_vars, $form_vars);
+
+	$body_vars = market_prepare_form_vars($item);
+
+	$form_vars = array(
+		'enctype' => 'multipart/form-data',
+		'class' => 'elgg-form-alt',
+	);
+
+	$form = elgg_view_form('market/save', $form_vars, $body_vars);
 
 	$params = array(
 		'title' => $title,
@@ -104,7 +109,7 @@ function market_get_page_content_save ($guid = null) {
 	return $params;
 }
 
-function market_prepare_form_vars (ElggObject $item = null) {
+function market_prepare_form_vars ($item = null) {
 	// input names => defaults
 	$values = array(
 		'title' => NULL,

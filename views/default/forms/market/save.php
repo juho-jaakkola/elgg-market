@@ -30,6 +30,9 @@ $access_input = elgg_view('input/access', array(
 	'value' => $vars['access'],
 ));
 
+$image1_label = elgg_echo('market:image');
+$image1_input = elgg_view('input/file', array('name' => 'image1'));
+
 $submit_input = elgg_view('input/submit', array(
 	'name' => 'submit',
 ));
@@ -65,6 +68,10 @@ echo <<<FORM
 	$tags_input
 </div>
 <div>
+	<label>$image1_label</label>
+	$image1_input
+</div>
+<div>
 	<label>$access_label</label>
 	$access_input
 </div>
@@ -73,4 +80,3 @@ echo <<<FORM
 	$submit_input
 </div>
 FORM;
-

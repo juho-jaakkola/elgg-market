@@ -10,6 +10,7 @@ $finnish = array(
 	'market:buy:confirm' => 'Haluatko varmasti ostaa tämän kohteen?',
 	"market:status:sold" => 'Myyty',
 	'market:purchase:revoke' => 'Peru kauppa',
+	'market:image' => 'Lisää kuva',
 
 	// Messages
 	'market:purchase:success' => 'Olet ostanut tämän kohteen',

@@ -12,8 +12,13 @@ function market_init () {
 
 	elgg_register_page_handler('market', 'market_page_handler');
 
+	// Register an icon handler for market items
+	elgg_register_page_handler('marketicon', 'market_icon_handler');
+
+	// Register URL handlers for market items
 	elgg_register_entity_url_handler('object', 'market_item', 'market_url_handler');
-	
+	elgg_register_plugin_hook_handler('entity:icon:url', 'object', 'market_icon_url_override');
+
 	elgg_register_plugin_hook_handler('register', 'menu:entity', 'market_entity_menu_setup');
 
 	elgg_register_menu_item('site', array(
@@ -87,4 +92,47 @@ function market_entity_menu_setup ($hook, $type, $return, $params) {
 	}
 
 	return $return;
+}
+
+/**
+ * Override the default entity icon for market items
+ *
+ * @return string Relative URL
+ */
+function market_icon_url_override($hook, $type, $returnvalue, $params) {
+	$item = $params['entity'];
+	$size = $params['size'];
+
+	if (!elgg_instanceof($item, 'object', 'market_item')) {
+		return $return;
+	}
+
+	$icontime = $item->icontime;
+
+	if ($icontime) {
+		// return thumbnail
+		return "marketicon/$item->guid/$size/$icontime.jpg";
+	}
+
+	// TODO
+	//return "mod/market/graphics/default{$size}.gif";
+}
+
+/**
+ * Handle market main image.
+ *
+ * @param array $page
+ * @return void
+ */
+function market_icon_handler($page) {
+	if (isset($page[0])) {
+		set_input('guid', $page[0]);
+	}
+	if (isset($page[1])) {
+		set_input('size', $page[1]);
+	}
+
+	$plugin_dir = elgg_get_plugins_path();
+	include("$plugin_dir/market/icon.php");
+	return true;
 }

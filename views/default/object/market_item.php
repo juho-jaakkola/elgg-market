@@ -16,6 +16,8 @@ $owner = $item->getOwnerEntity();
 $container = $item->getContainerEntity();
 $categories = elgg_view('output/categories', $vars);
 
+$icon = elgg_view_entity_icon($item, 'medium');
+
 $owner_icon = elgg_view_entity_icon($owner, 'tiny');
 $owner_link = elgg_view('output/url', array(
 	'href' => "market/owner/$owner->username",
@@ -85,5 +87,5 @@ if ($full) {
 	$params = $params + $vars;
 	$list_body = elgg_view('object/elements/summary', $params);
 
-	echo elgg_view_image_block($owner_icon, $list_body);
+	echo elgg_view_image_block($icon, $list_body);
 }
