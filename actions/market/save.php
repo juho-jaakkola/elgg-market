@@ -77,5 +77,5 @@ foreach ($images as $image) {
 }
 
 //register_error(elgg_echo('market:error:cannot:save'));
-system_message(elgg_echo('market:message:saved'));
+system_message(elgg_echo('market:save:success'));
 forward($item->getURL());

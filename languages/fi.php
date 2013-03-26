@@ -16,6 +16,7 @@ $finnish = array(
 	"market:list:list" => 'Listanäkymä',
 
 	// Messages
+	'market:save:success' => 'Kohde tallennettu',
 	'market:purchase:success' => 'Olet ostanut tämän kohteen',
 	'market:purchase:revoke:success' => 'Palautettiin kohde takaisin myyntiin',
 	'market:error:already_sold' => 'Tämä kohde on valitettavasti jo myyty!',
