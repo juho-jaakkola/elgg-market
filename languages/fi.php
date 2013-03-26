@@ -12,6 +12,9 @@ $finnish = array(
 	'market:purchase:revoke' => 'Peru kauppa',
 	'market:image' => 'Lisää kuva',
 
+	"market:list:gallery" => 'Gallerianäkymä',
+	"market:list:list" => 'Listanäkymä',
+
 	// Messages
 	'market:purchase:success' => 'Olet ostanut tämän kohteen',
 	'market:purchase:revoke:success' => 'Palautettiin kohde takaisin myyntiin',

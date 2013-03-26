@@ -39,6 +39,8 @@ if ($comments_count != 0) {
 	$comments_link = '';
 }
 
+$price = elgg_echo('market:price') . ": {$item->price}€";
+
 $metadata = elgg_view_menu('entity', array(
 	'entity' => $vars['entity'],
 	'handler' => 'market',
@@ -74,9 +76,16 @@ if ($full) {
 		'icon' => $owner_icon,
 		'body' => $body,
 	));
-
+} elseif (elgg_in_context('gallery')) {
+	echo '<div class="market-gallery-item">';
+	echo "<h3>" . $item->title . "</h3>";
+	echo elgg_view_entity_icon($item, 'large');
+	echo "<p class='subtitle'>$owner_link $date<br />$price</p>";
+	echo '</div>';
 } else {
 	// brief view
+
+	$excerpt .= "<p>$price</p>";
 
 	$params = array(
 		'entity' => $item,

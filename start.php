@@ -47,6 +47,7 @@ function market_page_handler ($page) {
 			break;
 		case 'all':
 		default:
+			market_register_toggle();
 			$params = market_get_page_content_list();
 			break;
 	}
@@ -135,4 +136,34 @@ function market_icon_handler($page) {
 	$plugin_dir = elgg_get_plugins_path();
 	include("$plugin_dir/market/icon.php");
 	return true;
+}
+
+
+/**
+ * Adds a toggle to extra menu for switching between list and gallery views
+ */
+function market_register_toggle() {
+	$url = elgg_http_remove_url_query_element(current_page_url(), 'list_type');
+
+	if (get_input('list_type', 'list') == 'list') {
+		$list_type = "gallery";
+		$icon = elgg_view_icon('grid');
+	} else {
+		$list_type = "list";
+		$icon = elgg_view_icon('list');
+	}
+
+	if (substr_count($url, '?')) {
+		$url .= "&list_type=" . $list_type;
+	} else {
+		$url .= "?list_type=" . $list_type;
+	}
+
+	elgg_register_menu_item('extras', array(
+		'name' => 'market_list',
+		'text' => $icon,
+		'href' => $url,
+		'title' => elgg_echo("market:list:$list_type"),
+		'priority' => 1000,
+	));
 }
