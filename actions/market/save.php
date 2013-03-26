@@ -27,6 +27,8 @@ $item->access_id = $access_id;
 $item->price = $price;
 $item->save();
 
+elgg_clear_sticky_form('market');
+
 $images = array('image1');
 
 foreach ($images as $image) {
