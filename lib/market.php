@@ -40,14 +40,29 @@ function market_get_page_content_read ($guid = NULL) {
 		forward('');
 	}
 
-	if (elgg_is_logged_in() && $item->status !== 'sold') {
-		elgg_register_menu_item('title', array(
-			'name' => 'buy',
-			'href' => "action/market/buy?guid=$guid",
-			'text' => elgg_echo('market:buy'),
-			'is_action' => true,
-			'class' => 'elgg-button elgg-button-action'
-		));
+	if (elgg_is_logged_in()) {
+		$user_guid = elgg_get_logged_in_user_guid();
+		$owner_guid = elgg_get_page_owner_guid();
+
+		if ($item->status != 'sold' &&  $user_guid != $owner_guid) {
+			elgg_register_menu_item('title', array(
+				'name' => 'buy',
+				'href' => "action/market/buy?guid=$guid",
+				'text' => elgg_echo('market:buy'),
+				'is_action' => true,
+				'class' => 'elgg-button elgg-button-action'
+			));
+		}
+
+		if ($item->status == 'sold' && $user_guid == $owner_guid) {
+			elgg_register_menu_item('title', array(
+				'name' => 'revoke',
+				'href' => "action/market/revoke_purchase?guid=$guid",
+				'text' => elgg_echo('market:purchase:revoke'),
+				'is_action' => true,
+				'class' => 'elgg-button elgg-button-action'
+			));
+		}
 	}
 	$return['title'] = $item->title;
 
