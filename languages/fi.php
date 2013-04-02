@@ -11,6 +11,8 @@ $finnish = array(
 	"market:status:sold" => 'Myyty',
 	'market:purchase:revoke' => 'Peru kauppa',
 	'market:image' => 'Lisää kuva',
+	'market:price:view' => '<b>Hinta:</b> %s€',
+	'market:price:currency' => '%s€',
 
 	"market:list:gallery" => 'Gallerianäkymä',
 	"market:list:list" => 'Listanäkymä',

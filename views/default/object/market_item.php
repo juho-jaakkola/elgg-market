@@ -56,21 +56,6 @@ if (elgg_in_context('widgets')) {
 }
 
 if ($full) {
-	
-	$content = "{$item->description}<p>$price</p>";
-
-	$description = elgg_view('output/longtext', array(
-		'value' => $content,
-		'class' => 'market-item',
-	));
-
-	$icon = '';
-	if ($item->icontime) {
-		$icon = elgg_view_entity_icon($item, 'large', array('link_class' => 'float mrm mvm'));
-	}
-
-	$body = "<div class=\"elgg-image-block\"><div class=\"elgg-image\">$icon</div><div class=\"elgg-body\">$description</div></div><div class=\"clearfloat\"></div>";
-
 	$params = array(
 		'entity' => $item,
 		'title' => false,
@@ -80,21 +65,19 @@ if ($full) {
 	$params = $params + $vars;
 	$summary = elgg_view('object/elements/summary', $params);
 
+	$body = elgg_view('market/layout', $vars);
+
 	echo elgg_view('object/elements/full', array(
 		'summary' => $summary,
 		'icon' => $owner_icon,
 		'body' => $body,
 	));
 } elseif (elgg_in_context('gallery')) {
-	echo '<div class="market-gallery-item">';
-	echo "<h3>" . $item->title . "</h3>";
-	echo elgg_view_entity_icon($item, 'large');
-	echo "<p class='subtitle'>$owner_link $date<br />$price</p>";
-	echo '</div>';
+	echo elgg_view('market/gallery', $vars);
 } else {
 	// brief view
 	$excerpt = elgg_get_excerpt($item->description);
-	$content = "<p>$excerpt</p></p>$price</p>";
+	$content = "<p>$excerpt</p><p><strong>$price</strong></p>";
 
 	$params = array(
 		'entity' => $item,

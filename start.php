@@ -12,6 +12,8 @@ function market_init () {
 
 	elgg_register_page_handler('market', 'market_page_handler');
 
+	elgg_extend_view('css/elgg', 'market/css');
+
 	// Register an icon handler for market items
 	elgg_register_page_handler('marketicon', 'market_icon_handler');
 

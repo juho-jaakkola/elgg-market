@@ -1,12 +1,19 @@
 <?php
 
+/**
+ * Get page components to list all market items.
+ * 
+ * @return array
+ */
 function market_get_page_content_list () {
 	elgg_register_title_button();
-	
+
 	$items = elgg_list_entities(array(
 		'type' => 'object',
 		'subtype' => 'market_item',
-		'full_view' => false
+		'full_view' => false,
+		'list_class' => 'market-list',
+		'gallery_class' => 'market-gallery',
 	));
 
 	$params = array(
@@ -18,12 +25,10 @@ function market_get_page_content_list () {
 	return $params;
 }
 
-
 /**
  * Get page components to view a market item.
  *
  * @param int $guid GUID of a market item entity.
- * @return array
  */
 function market_get_page_content_read ($guid = NULL) {
 
