@@ -4,7 +4,7 @@ $title = get_input('title');
 $description = get_input('description');
 $price = get_input('price');
 $guid = get_input('guid');
-$access_id = get_input('access');
+$access_id = get_input('access_id');
 //$ = get_input('');
 
 elgg_make_sticky_form('market');

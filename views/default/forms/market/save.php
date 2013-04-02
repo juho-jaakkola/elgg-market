@@ -26,8 +26,8 @@ $tags_input = elgg_view('input/tags', array(
 
 $access_label = elgg_echo('access');
 $access_input = elgg_view('input/access', array(
-	'name' => 'access',
-	'value' => $vars['access'],
+	'name' => 'access_id',
+	'value' => $vars['access_id'],
 ));
 
 $image1_label = elgg_echo('market:image');
