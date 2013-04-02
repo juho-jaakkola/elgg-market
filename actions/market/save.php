@@ -5,6 +5,7 @@ $description = get_input('description');
 $price = get_input('price');
 $guid = get_input('guid');
 $access_id = get_input('access_id');
+$tags = get_input('tags');
 //$ = get_input('');
 
 elgg_make_sticky_form('market');
@@ -24,6 +25,7 @@ if ($guid) {
 $item->title = $title;
 $item->description = $description;
 $item->access_id = $access_id;
+$item->tags = string_to_tag_array($tags);
 $item->price = $price;
 $item->save();
 

@@ -116,6 +116,7 @@ function market_prepare_form_vars ($item = null) {
 		'description' => NULL,
 		'guid' => NULL,
 		'access_id' => ACCESS_LOGGED_IN,
+		'tags' => NULL,
 		'container_guid' => NULL,
 		'price' => NULL,
 	);
