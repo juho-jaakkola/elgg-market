@@ -21,9 +21,12 @@ $finnish = array(
 	'market:save:success' => 'Kohde tallennettu',
 	'market:purchase:success' => 'Olet ostanut tämän kohteen',
 	'market:purchase:revoke:success' => 'Palautettiin kohde takaisin myyntiin',
+	'market:message:deleted_post' => 'Kohde poistettu',
 	'market:error:already_sold' => 'Tämä kohde on valitettavasti jo myyty!',
 	'market:error:purchase_failed' => 'Ostaminen epäonnistui! Yritä uudelleen.',
 	'market:error:revoke_failed' => 'Kaupan peruuttaminen epäonnistui!',
+	'market:error:not_found' => 'Kohdetta ei löytynyt',
+	'market:error:cannot_delete' => 'Kohteen poistaminen epäonnistui',
 
 	// Notifications
 	'market:item_bought:subject' => 'Myyntiin laittamasi kohde on ostettu',

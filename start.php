@@ -7,6 +7,7 @@ function market_init () {
 	elgg_register_action('market/save', $actions_path . 'save.php');
 	elgg_register_action('market/buy', $actions_path . 'buy.php');
 	elgg_register_action('market/revoke_purchase', $actions_path . 'revoke_purchase.php');
+	elgg_register_action('market/delete', $actions_path . 'delete.php');
 
 	elgg_register_library('elgg:market', elgg_get_plugins_path() . 'market/lib/market.php');
 
