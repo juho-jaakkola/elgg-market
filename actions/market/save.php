@@ -43,21 +43,16 @@ foreach ($images as $image) {
 
 		$filehandler = new ElggFile();
 		$filehandler->owner_guid = $item->owner_guid;
-		$filehandler->setFilename("{$prefix}_{$image}_master.jpg");
+		$filehandler->setFilename("{$prefix}_{$image}_original.jpg");
 		$filehandler->open("write");
 		$filehandler->write(get_uploaded_file($image));
 		$filehandler->close();
 		$filename = $filehandler->getFilenameOnFilestore();
 
-		$sizes = array('tiny', 'small', 'medium', 'large');
+		$sizes = array('tiny', 'small', 'medium', 'large', 'master');
 
 		$thumbs = array();
 		foreach ($sizes as $size) {
-			if ($size == 'large') {
-				// Override default setting
-				$icon_sizes[$size]['square'] = TRUE;
-			}
-
 			$thumbs[$size] = get_resized_image_from_existing_file(
 				$filename,
 				$icon_sizes[$size]['w'],

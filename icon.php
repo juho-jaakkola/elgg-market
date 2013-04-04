@@ -23,7 +23,8 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']
 }
 
 $size = strtolower(get_input('size'));
-if (!in_array($size, array('large', 'medium', 'small', 'tiny', 'master', 'topbar'))) {
+
+if (!in_array($size, array('tiny', 'small', 'medium', 'large', 'master', 'original'))) {
 	$size = "medium";
 }
 

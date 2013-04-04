@@ -17,7 +17,7 @@ if ($item->icontime) {
 
 	$icon = elgg_view('output/url', array(
 		'text' => $img,
-		'href' => $item->getIconURL('master'),
+		'href' => $item->getIconURL('original'),
 		'class' => 'elgg-lightbox'
 	));
 }
