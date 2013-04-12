@@ -17,6 +17,12 @@ if (empty($description)) {
 	register_error(elgg_echo('market:error:required_value', array(elgg_echo('description'))));
 	forward(REFERER);
 }
+if (empty($price)) {
+	$price = 0;
+} else {
+	// Remove non-numeric characters except , and .
+	$price = preg_replace('/[^0-9,\.]/', '', $price);
+}
 
 $new = false;
 if ($guid) {
