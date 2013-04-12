@@ -21,13 +21,16 @@ class MarketItem extends ElggObject {
 	 * @return boolean
 	 */
 	public function delete() {
+		$images = array('image1', 'image2', 'image3', 'image4');
 		$sizes = array('tiny', 'small', 'medium', 'large', 'master', 'original');
 
-		foreach ($sizes as $size) {
-			$file = new ElggFile();
-			$file->owner_guid = $this->owner_guid;
-			$file->setFilename("market/{$this->guid}_image1_{$size}.jpg");
-			$file->delete();
+		foreach ($images as $image) {
+			foreach ($sizes as $size) {
+				$file = new ElggFile();
+				$file->owner_guid = $this->owner_guid;
+				$file->setFilename("market/{$this->guid}_{$image}_{$size}.jpg");
+				$file->delete();
+			}
 		}
 
 		return parent::delete();

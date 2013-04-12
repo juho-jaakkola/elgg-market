@@ -31,7 +31,7 @@ $item->save();
 
 elgg_clear_sticky_form('market');
 
-$images = array('image1');
+$images = array('image1', 'image2', 'image3', 'image4');
 
 foreach ($images as $image) {
 	$has_uploaded_icon = (!empty($_FILES[$image]['type']) && substr_count($_FILES[$image]['type'], 'image/'));

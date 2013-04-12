@@ -115,7 +115,7 @@ function market_icon_url_override($hook, $type, $returnvalue, $params) {
 
 	if ($icontime) {
 		// return thumbnail
-		return "marketicon/$item->guid/$size/$icontime.jpg";
+		return "marketicon/$item->guid/$size/image1/$icontime.jpg";
 	}
 
 	// TODO
@@ -134,6 +134,9 @@ function market_icon_handler($page) {
 	}
 	if (isset($page[1])) {
 		set_input('size', $page[1]);
+	}
+	if (isset($page[2])) {
+		set_input('image', $page[2]);
 	}
 
 	$plugin_dir = elgg_get_plugins_path();

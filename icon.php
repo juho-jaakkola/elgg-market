@@ -22,6 +22,11 @@ if (isset($_SERVER['HTTP_IF_NONE_MATCH']) && trim($_SERVER['HTTP_IF_NONE_MATCH']
 	exit;
 }
 
+$image = get_input('image');
+if (!$image) {
+	$image = 'image1';
+}
+
 $size = strtolower(get_input('size'));
 
 if (!in_array($size, array('tiny', 'small', 'medium', 'large', 'master', 'original'))) {
@@ -32,7 +37,7 @@ $success = false;
 
 $filehandler = new ElggFile();
 $filehandler->owner_guid = $item->owner_guid;
-$filehandler->setFilename("market/{$item->guid}_image1_{$size}.jpg");
+$filehandler->setFilename("market/{$item->guid}_{$image}_{$size}.jpg");
 
 $success = false;
 if ($filehandler->open("read")) {

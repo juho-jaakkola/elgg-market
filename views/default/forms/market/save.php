@@ -30,8 +30,16 @@ $access_input = elgg_view('input/access', array(
 	'value' => $vars['access_id'],
 ));
 
-$image1_label = elgg_echo('market:image');
-$image1_input = elgg_view('input/file', array('name' => 'image1'));
+$image_label = elgg_echo('market:image');
+for ($i = 1; $i < 5; $i++) {
+	$image = "image{$i}";
+
+	$image_input = "image{$i}_input";
+	$$image_input = elgg_view('input/file', array(
+		'name' => $image,
+		'value' => $vars[$image],
+	));
+}
 
 $submit_input = elgg_view('input/submit', array(
 	'name' => 'submit',
@@ -41,14 +49,6 @@ $guid_input = elgg_view('input/hidden', array(
 	'name' => 'guid',
 	'value' => $vars['guid'],
 ));
-
-/*
-$_label = elgg_echo('market:');
-$_input = elgg_view('input/', array(
-	'name' => '',
-	'value' => $vars[''],
-));
-*/
 
 echo <<<FORM
 <div>
@@ -68,8 +68,20 @@ echo <<<FORM
 	$tags_input
 </div>
 <div>
-	<label>$image1_label</label>
+	<label>$image_label</label>
 	$image1_input
+</div>
+<div>
+	<label>$image_label</label>
+	$image2_input
+</div>
+<div>
+	<label>$image_label</label>
+	$image3_input
+</div>
+<div>
+	<label>$image_label</label>
+	$image4_input
 </div>
 <div>
 	<label>$access_label</label>

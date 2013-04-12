@@ -126,10 +126,25 @@ function market_prepare_form_vars ($item = null) {
 		'price' => NULL,
 	);
 
+	$images = array('image1', 'image2', 'image3', 'image4');
+
 	if ($item) {
 		foreach (array_keys($values) as $field) {
 			if (isset($item->$field)) {
 				$values[$field] = $item->$field;
+			}
+		}
+
+		foreach ($images as $image) {
+			$prefix = "market/" . $item->guid;
+			$file = new ElggFile();
+			$file->owner_guid = $item->owner_guid;
+			$file->setFilename("{$prefix}_{$image}_original.jpg");
+
+			if (file_exists($file->getFilenameOnFilestore())) {
+				$values[$image] = $file->getFilename();
+			} else {
+				$values[$image] = NULL;
 			}
 		}
 	}

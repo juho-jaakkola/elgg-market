@@ -20,7 +20,6 @@
 .market-block {
 	background: #eeeeee;
 	padding: 5px;
-	margin-top: 10px;
 	
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
