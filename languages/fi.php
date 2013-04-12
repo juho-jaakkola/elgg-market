@@ -30,6 +30,7 @@ $finnish = array(
 	'market:error:revoke_failed' => 'Kaupan peruuttaminen epäonnistui!',
 	'market:error:not_found' => 'Kohdetta ei löytynyt',
 	'market:error:cannot_delete' => 'Kohteen poistaminen epäonnistui',
+	'market:error:required_value' => '%s on pakollinen kenttä',
 
 	// Notifications
 	'market:item_bought:subject' => 'Myyntiin laittamasi kohde on ostettu',

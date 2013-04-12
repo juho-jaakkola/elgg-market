@@ -9,6 +9,15 @@ $tags = get_input('tags');
 
 elgg_make_sticky_form('market');
 
+if (empty($title)) {
+	register_error(elgg_echo('market:error:required_value', array(elgg_echo('title'))));
+	forward(REFERER);
+}
+if (empty($description)) {
+	register_error(elgg_echo('market:error:required_value', array(elgg_echo('description'))));
+	forward(REFERER);
+}
+
 $new = false;
 if ($guid) {
 	$item = get_entity($guid);
