@@ -6,10 +6,10 @@ $price = get_input('price');
 $guid = get_input('guid');
 $access_id = get_input('access_id');
 $tags = get_input('tags');
-//$ = get_input('');
 
 elgg_make_sticky_form('market');
 
+$new = false;
 if ($guid) {
 	$item = get_entity($guid);
 	
@@ -18,8 +18,8 @@ if ($guid) {
 		forward(REFERER);
 	}
 } else {
-	$item = new ElggObject();
-	$item->subtype = 'market_item';
+	$item = new MarketItem();
+	$new = true;
 }
 
 $item->title = $title;
@@ -30,6 +30,10 @@ $item->price = $price;
 $item->save();
 
 elgg_clear_sticky_form('market');
+
+if ($new) {
+	add_to_river('river/object/market_item/create', 'create', elgg_get_logged_in_user_guid(), $item->getGUID());
+}
 
 $images = array('image1', 'image2', 'image3', 'image4');
 
@@ -78,6 +82,5 @@ foreach ($images as $image) {
 	}
 }
 
-//register_error(elgg_echo('market:error:cannot:save'));
 system_message(elgg_echo('market:save:success'));
 forward($item->getURL());

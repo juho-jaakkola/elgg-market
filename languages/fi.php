@@ -13,6 +13,9 @@ $finnish = array(
 	'market:image' => 'Lisää kuva',
 	'market:price:view' => '<b>Hinta:</b> %s€',
 	'market:price:currency' => '%s€',
+	
+	// River
+	'river:create:object:market_item' => '%s lisäsi kirpputorille kohteen %s', 
 
 	"market:list:gallery" => 'Gallerianäkymä',
 	"market:list:list" => 'Listanäkymä',

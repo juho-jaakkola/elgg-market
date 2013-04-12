@@ -35,5 +35,7 @@ class MarketItem extends ElggObject {
 
 		return parent::delete();
 	}
-	
+
+	// TODO Override getIconURL method to return a specific one of the four images
+
 }
